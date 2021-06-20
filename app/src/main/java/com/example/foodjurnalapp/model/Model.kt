@@ -9,13 +9,13 @@ data class User(
     @ColumnInfo(name="name")
     var name:String,
     @ColumnInfo(name="age")
-    var age:String,
+    var age:Int,
     @ColumnInfo(name="gender")
     var gender:String,
     @ColumnInfo(name="weight")
-    var weight:String,
+    var weight:Int,
     @ColumnInfo(name="height")
-    var height:String,
+    var height:Int,
     @ColumnInfo(name="goal")
     var title:String
 ){
