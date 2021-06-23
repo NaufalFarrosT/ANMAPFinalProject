@@ -22,3 +22,15 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     var uuid:Int=0
 }
+
+data class FoodLog(
+    @ColumnInfo(name="name")
+    var name:String,
+    @ColumnInfo(name="calories")
+    var cal:Int,
+    @ColumnInfo(name="date")
+    var date:String
+){
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int=0
+}

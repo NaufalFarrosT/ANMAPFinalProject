@@ -9,5 +9,14 @@
         android:id="@+id/welcomeFragment"
         android:name="com.example.foodjurnalapp.view.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/actionFoodLog"
+            app:destination="@id/foodLogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodLogFragment"
+        android:name="com.example.foodjurnalapp.view.FoodLogFragment"
+        android:label="fragment_food_log"
+        tools:layout="@layout/fragment_food_log" />
 </navigation>
