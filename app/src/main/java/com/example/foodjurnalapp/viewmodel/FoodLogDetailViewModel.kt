@@ -3,8 +3,8 @@ package com.example.foodjurnalapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.room.Room
-import com.example.foodjurnalapp.model.FoodDatabase
 import com.example.foodjurnalapp.model.FoodLog
+import com.example.foodjurnalapp.model.UserDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,8 +18,8 @@ class FoodLogDetailViewModel(application: Application)
     fun addFoodLog(list: List<FoodLog>){
         launch {
             val db = Room.databaseBuilder(
-                    getApplication(), FoodDatabase::class.java,
-                    "foodlogdb").build()
+                getApplication(), UserDatabase::class.java,
+                "foodjournaldb").build()
             db.foodDao().insertAll(*list.toTypedArray())
         }
     }

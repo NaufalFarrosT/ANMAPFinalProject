@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.foodjurnalapp.R
 import com.example.foodjurnalapp.model.FoodLog
@@ -25,8 +26,10 @@ class AddMealFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(FoodLogDetailViewModel::class.java)
+
         btnAddMeal.setOnClickListener {
-            var foodLog = FoodLog(txtAddMealName.text.toString(), txtAddMealCal.text.toString().toInt(), Calendar.DATE.toString())
+            var foodLog = FoodLog(txtAddMealName.text.toString(), txtAddMealCal.text.toString().toInt(), Calendar.DATE.toString(),1)
             val list = listOf(foodLog)
             viewModel.addFoodLog(list)
             Toast.makeText(view.context, "Data Added", Toast.LENGTH_LONG).show()

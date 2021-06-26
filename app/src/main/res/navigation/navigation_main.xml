@@ -11,12 +11,21 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/actionFoodLog"
+            android:id="@+id/actionFoodLogFragment"
             app:destination="@id/foodLogFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodLogFragment"
         android:name="com.example.foodjurnalapp.view.FoodLogFragment"
         android:label="fragment_food_log"
-        tools:layout="@layout/fragment_food_log" />
+        tools:layout="@layout/fragment_food_log" >
+        <action
+            android:id="@+id/actionAddMealFragment"
+            app:destination="@id/addMealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMealFragment"
+        android:name="com.example.foodjurnalapp.view.AddMealFragment"
+        android:label="fragment_add_meal"
+        tools:layout="@layout/fragment_add_meal" />
 </navigation>

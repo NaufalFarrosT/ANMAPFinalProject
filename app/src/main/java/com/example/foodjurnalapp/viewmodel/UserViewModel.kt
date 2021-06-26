@@ -2,6 +2,7 @@ package com.example.foodjurnalapp.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.example.foodjurnalapp.model.User
 import com.example.foodjurnalapp.model.UserDatabase
@@ -19,7 +20,7 @@ class UserViewModel(application: Application)
         launch {
             val db = Room.databaseBuilder(
                     getApplication(), UserDatabase::class.java,
-                    "newuserdb").build()
+                    "foodjournaldb").build()
             db.userDao().insertAll(*list.toTypedArray())
         }
     }

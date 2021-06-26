@@ -23,14 +23,17 @@ data class User(
     var uuid:Int=0
 }
 
+@Entity
 data class FoodLog(
     @ColumnInfo(name="name")
     var name:String,
     @ColumnInfo(name="calories")
     var cal:Int,
     @ColumnInfo(name="date")
-    var date:String
+    var date:String,
+    @ColumnInfo(name="userID")
+    var userID:Int
 ){
     @PrimaryKey(autoGenerate = true)
-    var uuid:Int=0
+    var fid:Int=0
 }

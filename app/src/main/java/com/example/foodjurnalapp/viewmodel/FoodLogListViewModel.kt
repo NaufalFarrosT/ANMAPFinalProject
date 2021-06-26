@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
-import com.example.foodjurnalapp.model.FoodDatabase
 import com.example.foodjurnalapp.model.FoodLog
+import com.example.foodjurnalapp.model.UserDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -22,13 +22,13 @@ class FoodLogListViewModel(application:Application)
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun refresh(){
+    fun refresh(uid:Int){
         launch {
             val db = Room.databaseBuilder(
-                    getApplication(),
-                    FoodDatabase::class.java, "foodlogdb").build()
-
-            foodLogLD.value = db.foodDao().selectAllFood()
+                    getApplication(),UserDatabase::class.java,
+                    "foodjournaldb"
+            ).build()
+            foodLogLD.value = db.foodDao().selectAllFood(uid)
         }
     }
 }

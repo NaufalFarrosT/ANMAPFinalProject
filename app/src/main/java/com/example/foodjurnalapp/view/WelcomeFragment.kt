@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.foodjurnalapp.R
 import com.example.foodjurnalapp.model.User
 import com.example.foodjurnalapp.viewmodel.UserViewModel
@@ -27,15 +29,18 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel=ViewModelProvider(this).get(UserViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         btnStartTheJourney.setOnClickListener {
             var radio = view.findViewById<RadioButton>(radioGroupGoal.checkedRadioButtonId)
-            var user = User(txtName.text.toString(), txtAge.text.toString().toInt(),txtGender.toString(),
-                        txtWeight.text.toString().toInt(), txtHeight.text.toString().toInt(), "Loss Weight")
+            var user = User(txtName.text.toString(), txtAge.text.toString().toInt(),txtGender.text.toString(),
+                        txtWeight.text.toString().toInt(), txtHeight.text.toString().toInt(), radio.text.toString())
             val list = listOf(user)
             viewModel.addUser(list)
-            Toast.makeText(view.context, "Data Added", Toast.LENGTH_LONG).show()
+            Toast.makeText(view.context, "Login Success", Toast.LENGTH_LONG).show()
+
+            val action = WelcomeFragmentDirections.actionFoodLogFragment()
+            Navigation.findNavController(it).navigate(action)
         }
     }
 }
