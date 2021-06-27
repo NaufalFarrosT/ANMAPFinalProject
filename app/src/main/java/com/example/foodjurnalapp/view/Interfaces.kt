@@ -1,3 +1,7 @@
 package com.example.foodjurnalapp.view
 
-interface UserAddUser
+import android.view.View
+
+interface FabBtnClicked{
+    fun onfabBtnClicked(v: View)
+}

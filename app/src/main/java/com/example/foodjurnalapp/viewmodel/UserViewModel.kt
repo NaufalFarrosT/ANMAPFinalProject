@@ -47,6 +47,7 @@ class UserViewModel(application: Application)
                 }
             }
 
+            // Untuk input user ke Database
             if(check == 0){
                 val list = listOf(user)
                 addUser(list)

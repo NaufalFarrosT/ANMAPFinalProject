@@ -14,10 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodjurnalapp.R
 import com.example.foodjurnalapp.viewmodel.FoodLogListViewModel
 import com.example.foodjurnalapp.viewmodel.UserViewModel
+import kotlinx.android.synthetic.main.fragment_add_meal.*
 import kotlinx.android.synthetic.main.fragment_food_log.*
 import java.util.*
 
-class FoodLogFragment : Fragment() {
+class FoodLogFragment : Fragment(),FabBtnClicked {
     private lateinit var viewModel:FoodLogListViewModel
     private lateinit var viewModelUser:UserViewModel
     private val foodLogListAdapter = FoodLogListAdapter(arrayListOf())
@@ -31,14 +32,20 @@ class FoodLogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val uuid = FoodLogFragmentArgs.fromBundle(requireArguments()).uID
+        var uuid = 1
+        if(arguments != null)
+        {
+            uuid = FoodLogFragmentArgs.fromBundle(requireArguments()).uID
+        }
 
+        // Set up current date
         val sdf = java.text.SimpleDateFormat("dd/M/yyyy")
         val currentDate=sdf.format(Date())
         txtCurrentDate.setText(currentDate)
 
         viewModel = ViewModelProvider(this).get(FoodLogListViewModel::class.java)
         viewModelUser = ViewModelProvider(this).get(UserViewModel::class.java)
+
         viewModelUser.fetch(uuid)
         viewModel.refresh(uuid)
 
@@ -56,6 +63,8 @@ class FoodLogFragment : Fragment() {
     fun observeViewModel(){
         viewModel.foodLogLD.observe(viewLifecycleOwner, Observer {
             foodLogListAdapter.updateFoodLogList(it)
+
+            // to get Total Calories
             var total=0
             for(x in it){
                 total+=x.cal
@@ -83,5 +92,10 @@ class FoodLogFragment : Fragment() {
 
             txtTargetCalories.setText(target.toString() + " Cal")
         })
+    }
+
+    override fun onfabBtnClicked(v: View) {
+        val action = FoodLogFragmentDirections.actionAddMealFragment()
+        Navigation.findNavController(v).navigate(action)
     }
 }

@@ -25,6 +25,12 @@
         <argument
             android:name="uID"
             app:argType="integer" />
+        <action
+            android:id="@+id/actionReportFragment"
+            app:destination="@id/reportFragment" />
+        <action
+            android:id="@+id/actionProfileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addMealFragment"
@@ -35,10 +41,24 @@
         android:id="@+id/profileFragment"
         android:name="com.example.foodjurnalapp.view.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_foodLogFragment"
+            app:destination="@id/foodLogFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+    </fragment>
     <fragment
         android:id="@+id/reportFragment"
         android:name="com.example.foodjurnalapp.view.ReportFragment"
         android:label="fragment_report"
-        tools:layout="@layout/fragment_report" />
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_reportFragment_to_foodLogFragment"
+            app:destination="@id/foodLogFragment" />
+        <action
+            android:id="@+id/action_reportFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

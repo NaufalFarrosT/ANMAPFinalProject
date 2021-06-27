@@ -13,6 +13,7 @@ import com.example.foodjurnalapp.R
 import com.example.foodjurnalapp.model.FoodLog
 import com.example.foodjurnalapp.viewmodel.FoodLogDetailViewModel
 import kotlinx.android.synthetic.main.fragment_add_meal.*
+import java.util.*
 
 class AddMealFragment : Fragment() {
     private lateinit var viewModel:FoodLogDetailViewModel
@@ -26,10 +27,15 @@ class AddMealFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // set current date
+        val sdf = java.text.SimpleDateFormat("dd/M/yyyy")
+        val currentDate=sdf.format(Date())
+        txtDateAddMeal.setText(currentDate)
+
         viewModel = ViewModelProvider(this).get(FoodLogDetailViewModel::class.java)
 
         btnAddMeal.setOnClickListener {
-            var foodLog = FoodLog(txtAddMealName.text.toString(), txtAddMealCal.text.toString().toInt(), Calendar.DATE.toString(),1)
+            var foodLog = FoodLog(txtAddMealName.text.toString(), txtAddMealCal.text.toString().toInt(), currentDate,2)
             val list = listOf(foodLog)
             viewModel.addFoodLog(list)
             Toast.makeText(view.context, "Data Added", Toast.LENGTH_LONG).show()

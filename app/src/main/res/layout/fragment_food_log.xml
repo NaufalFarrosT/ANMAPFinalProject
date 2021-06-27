@@ -6,6 +6,9 @@
         <variable
             name="user"
             type="com.example.foodjurnalapp.model.User" />
+        <variable
+            name="addListener"
+            type="com.example.foodjurnalapp.view.FabBtnClicked" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -127,6 +130,7 @@
             android:layout_marginBottom="75dp"
             android:layout_marginEnd="24dp"
             android:clickable="true"
+            android:onClick="@{addListener::onfabBtnClicked}"
             android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

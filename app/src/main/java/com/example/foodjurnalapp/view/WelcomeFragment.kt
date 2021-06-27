@@ -41,7 +41,7 @@ class WelcomeFragment : Fragment() {
 
             Toast.makeText(view.context, "Login Success", Toast.LENGTH_LONG).show()
 
-            val action = WelcomeFragmentDirections.actionFoodLogFragment(1)
+            val action = WelcomeFragmentDirections.actionFoodLogFragment(2)
             Navigation.findNavController(it).navigate(action)
         }
     }
