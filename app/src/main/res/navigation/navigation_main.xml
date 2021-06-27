@@ -31,4 +31,14 @@
         android:name="com.example.foodjurnalapp.view.AddMealFragment"
         android:label="fragment_add_meal"
         tools:layout="@layout/fragment_add_meal" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.foodjurnalapp.view.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.example.foodjurnalapp.view.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
 </navigation>
