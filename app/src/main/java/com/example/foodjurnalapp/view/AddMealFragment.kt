@@ -26,6 +26,7 @@ class AddMealFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //in
         viewModel = ViewModelProvider(this).get(FoodLogDetailViewModel::class.java)
 
         btnAddMeal.setOnClickListener {
