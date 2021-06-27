@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.example.foodjurnalapp.model.FoodLog
 import com.example.foodjurnalapp.model.UserDatabase
+import com.example.foodjurnalapp.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -24,10 +25,7 @@ class FoodLogListViewModel(application:Application)
 
     fun refresh(uid:Int){
         launch {
-            val db = Room.databaseBuilder(
-                    getApplication(),UserDatabase::class.java,
-                    "foodjournaldb"
-            ).build()
+            val db = buildDb(getApplication())
             foodLogLD.value = db.foodDao().selectAllFood(uid)
         }
     }

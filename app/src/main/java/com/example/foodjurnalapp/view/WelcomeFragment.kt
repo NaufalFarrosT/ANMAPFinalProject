@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_welcome.*
 
 class WelcomeFragment : Fragment() {
     private lateinit var viewModel:UserViewModel
+    var uID=0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,11 +36,12 @@ class WelcomeFragment : Fragment() {
             var radio = view.findViewById<RadioButton>(radioGroupGoal.checkedRadioButtonId)
             var user = User(txtName.text.toString(), txtAge.text.toString().toInt(),txtGender.text.toString(),
                         txtWeight.text.toString().toInt(), txtHeight.text.toString().toInt(), radio.text.toString())
-            val list = listOf(user)
-            viewModel.addUser(list)
+
+            viewModel.getUserID(user)
+
             Toast.makeText(view.context, "Login Success", Toast.LENGTH_LONG).show()
 
-            val action = WelcomeFragmentDirections.actionFoodLogFragment()
+            val action = WelcomeFragmentDirections.actionFoodLogFragment(1)
             Navigation.findNavController(it).navigate(action)
         }
     }

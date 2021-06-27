@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.room.Room
 import com.example.foodjurnalapp.model.FoodLog
 import com.example.foodjurnalapp.model.UserDatabase
+import com.example.foodjurnalapp.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -17,9 +18,7 @@ class FoodLogDetailViewModel(application: Application)
 
     fun addFoodLog(list: List<FoodLog>){
         launch {
-            val db = Room.databaseBuilder(
-                getApplication(), UserDatabase::class.java,
-                "foodjournaldb").build()
+            val db = buildDb(getApplication())
             db.foodDao().insertAll(*list.toTypedArray())
         }
     }
